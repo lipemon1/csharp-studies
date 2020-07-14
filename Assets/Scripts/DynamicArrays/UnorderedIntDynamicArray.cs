@@ -2,7 +2,7 @@
 
 namespace DynamicArrays
 {
-    public class UnorderedIntDynamicArray : IntDynamicArray
+    public class UnorderedIntDynamicArray<T> : DynamicArray<T>
     {
         #region Construtor
 
@@ -15,7 +15,7 @@ namespace DynamicArrays
 
         #region Public Methods
 
-        public override void Add(int item)
+        public override void Add(T item)
         {
             if(count == items.Length)
                 Expand();
@@ -24,7 +24,7 @@ namespace DynamicArrays
             count++;
         }
         
-        public override bool Remove(int item)
+        public override bool Remove(T item)
         {
             var itemLocation = IndexOf(item);
             
@@ -40,11 +40,11 @@ namespace DynamicArrays
             }
         }
 
-        public override int IndexOf(int item)
+        public override int IndexOf(T item)
         {
             for (var i = 0; i < count; i++)
             {
-                if (items[i] == item)
+                if (items[i].Equals(item))
                     return i;
             }
 
@@ -53,9 +53,9 @@ namespace DynamicArrays
 
         public int LastIndexOf(int item)
         {
-            for (int i = count - 1; i >= 0; i--)
+            for (var i = count - 1; i >= 0; i--)
             {
-                if (items[i] == item)
+                if (items[i].Equals(item))
                     return i;
             }
 
@@ -68,7 +68,7 @@ namespace DynamicArrays
 
             for (var i = 0; i < count; i++)
             {
-                if(items[i] == item)
+                if(items[i].Equals(item))
                     foundedIndexes.Add(i);
             }
 

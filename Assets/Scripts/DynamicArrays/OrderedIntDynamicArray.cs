@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DynamicArrays
 {
-    public class OrderedIntDynamicArray : IntDynamicArray
+    public class OrderedIntDynamicArray<T> : DynamicArray<T> where T:IComparable
     {
         #region Constructor
 
@@ -15,13 +16,13 @@ namespace DynamicArrays
 
         #region Public Methods
 
-        public override void Add(int item)
+        public override void Add(T item)
         {
             if(count == items.Length)
                 Expand();
 
             int addLocation = 0;
-            while ((addLocation < count) && items[addLocation] < item)
+            while ((addLocation < count) && items[addLocation].CompareTo(item) < 0)
             {
                 addLocation++;
             }
@@ -31,7 +32,7 @@ namespace DynamicArrays
             count++;
         }
 
-        public override bool Remove(int item)
+        public override bool Remove(T item)
         {
             var itemLocation = IndexOf(item);
 
@@ -45,7 +46,7 @@ namespace DynamicArrays
             }
         }
 
-        public override int IndexOf(int item)
+        public override int IndexOf(T item)
         {
             var lowerBound = 0;
             var upperBound = count - 1;
@@ -58,11 +59,11 @@ namespace DynamicArrays
                     var middleLocation = lowerBound + (upperBound - lowerBound);
                     var middleValue = items[middleLocation];
 
-                    if (middleValue == item)
+                    if (middleValue.CompareTo(item) == 0)
                         location = middleLocation;
                     else
                     {
-                        if (middleValue > item)
+                        if (middleValue.CompareTo(item) > 0)
                             upperBound = middleLocation - 1;
                         else
                             lowerBound = middleLocation + 1;
