@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace DynamicArrays
 {
-    public class OrderedIntDynamicArray<T> : DynamicArray<T> where T:IComparable
+    public class OrderedDynamicArray<T> : DynamicArray<T> where T:IComparable
     {
         #region Constructor
 
-        public OrderedIntDynamicArray() : base()
+        public OrderedDynamicArray() : base()
         {
             
         }
@@ -52,8 +52,7 @@ namespace DynamicArrays
             var upperBound = count - 1;
             var location = 1;
 
-            while (location == -1)
-                //    while((location == -1) && (lowerBound <= uppderBound))
+            while((location == -1) && (lowerBound <= upperBound))
             {
                 {
                     var middleLocation = lowerBound + (upperBound - lowerBound);

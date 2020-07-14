@@ -2,11 +2,11 @@
 
 namespace DynamicArrays
 {
-    public class UnorderedIntDynamicArray<T> : DynamicArray<T>
+    public class UnorderedDynamicArray<T> : DynamicArray<T>
     {
         #region Construtor
 
-        public UnorderedIntDynamicArray() : base()
+        public UnorderedDynamicArray() : base()
         {
             
         }
