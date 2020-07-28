@@ -14,8 +14,6 @@ namespace ImplementAningInterface
             rectangles.Add(new Rectangle(3,4));
             rectangles.Add(new Rectangle(2, 2));
             rectangles.Add(new Rectangle(1, 2));
-
-            Console.Write(rectangles.ToString());
         }
     }
 }
